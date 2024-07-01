@@ -1,0 +1,25 @@
+#
+# This is a templated tox file and must be kept up to date with the original
+# from upstream at https://github.com/canonical/se-tooling-ci-common.
+#
+
+# .readthedocs.yaml
+# Read the Docs configuration file
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+
+# Required
+version: 2
+
+# Set the OS, Python version and other tools you might need
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.10"
+
+# Build documentation in the "docs/" directory with Sphinx
+sphinx:
+  configuration: doc/source/conf.py
+
+python:
+  install:
+    - requirements: requirements.txt
