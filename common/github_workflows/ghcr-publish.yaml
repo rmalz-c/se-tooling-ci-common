@@ -17,7 +17,7 @@ jobs:
   build:
     # Include the build workflow.
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_iduses
-    uses: ./.github/workflows/python-build.yaml
+    uses: ./.github/workflows/build.yaml
 
   ghcr-publish:
     runs-on: ubuntu-latest
@@ -33,7 +33,6 @@ jobs:
       - name: Get packages
         uses: actions/download-artifact@v4
         with:
-          name: packages
           path: dist
 
       - name: Set up Docker Buildx
