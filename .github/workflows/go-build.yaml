@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Artifacts
-          path: my_app
+          path: go/my_app
