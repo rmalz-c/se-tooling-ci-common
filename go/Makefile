@@ -5,11 +5,11 @@ all: lint build test
 
 .PHONY: build
 build:
-	go build -v -o my_app -ldflags="-X main.commit=$(VERSION)" cmd/my_app/main.go
+	go build -v -o my_app -ldflags="-X main.commit=$(VERSION)" cmd/main.go
 
 .PHONY: test
 test:
-	go test -v ./...
+	go test -v -ldflags="-X canonical.com/my_app/v2/cmd.commit=$(VERSION)" ./...
 
 .PHONY: lint
 lint:
