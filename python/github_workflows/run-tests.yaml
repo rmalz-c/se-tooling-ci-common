@@ -5,6 +5,12 @@ on:
   - push
   - pull_request
   - workflow_dispatch
+  - workflow_call:
+    inputs:
+      test_input:
+        description: 'Test Input'
+        required: false
+        type: string
 
 jobs:
   test:
@@ -28,6 +34,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
+    - name: Test input value
+      run: echo "Input value: ${{ inputs.test_input }}"
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
