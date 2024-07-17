@@ -2,14 +2,10 @@
 # from upstream at https://github.com/canonical/se-tooling-ci-common.
 name: Run Tests
 on:
-  - push
-  - pull_request
-  - workflow_dispatch
-  - workflow_call:
+  workflow_call:
     inputs:
-      test_input:
-        description: 'Test Input'
-        required: false
+      test-input:
+        required: true
         type: string
 
 jobs:
@@ -36,7 +32,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Test input value
       run: |
-        echo "Input value: ${{ inputs.test_input }}"
+        echo "Input value: ${{ inputs.test-input }}"
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
