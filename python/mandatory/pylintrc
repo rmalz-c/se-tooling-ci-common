@@ -21,5 +21,8 @@ ignore-long-lines=^\s+.+<?https?://\S+>?$
 #reports=yes
 score=yes
 
+[DESIGN]
+max-attributes=10
+
 [MESSAGES CONTROL]
 disable=
