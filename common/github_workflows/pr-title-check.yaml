@@ -1,0 +1,23 @@
+# This is a templated file and must be kept up-to-date with the original
+# from upstream at https://github.com/canonical/se-tooling-ci-common.
+name: PR Title Check
+on:
+  workflow_call:
+
+permissions:
+  pull-requests: read
+
+jobs:
+  check-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify JIRA ticket prefix in PR title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "PR title: $PR_TITLE"
+          if [[ ! "$PR_TITLE" =~ ^\[[A-Z][A-Z0-9]+-[0-9]+\].+ ]]; then
+            echo "::error::PR title must start with a JIRA ticket, e.g. '[JIRA-1234] title of PR'"
+            exit 1
+          fi
+          echo "PR title format OK"
